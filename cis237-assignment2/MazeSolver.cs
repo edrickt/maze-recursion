@@ -20,6 +20,8 @@ namespace cis237_assignment2
         {
             // Do work needed to use mazeTraversal recursive call and solve the maze.
             Console.WriteLine(Environment.NewLine + "Solve Maze");
+            maze[xStart, yStart] = char.Parse("O");
+            PrintMaze(maze);
             MazeTraversal(maze, xStart, yStart);
         }
 
@@ -48,46 +50,77 @@ namespace cis237_assignment2
         private void MazeTraversal(char[,] maze, int xStart, int yStart)
         {
             maze[xStart, yStart] = char.Parse("O");
-            PrintMaze(maze);
             // Implement maze traversal recursive call
+            // If will work better than else if
             if (xStart + 1 == maze.GetLength(0) || yStart + 1 == maze.GetLength(1) + 1)
             {
                 Console.WriteLine("Finish!");
             }
-            else if (maze[(xStart - 1), yStart] == '.')
+
+            if (maze[(xStart - 1), yStart] == '.')
             {
-                xStart = xStart - 1;
+                //xStart = xStart - 1;
                 maze[xStart, yStart] = char.Parse("O");
                 PrintMaze(maze);
-                MazeTraversal(maze, xStart, yStart);
+                MazeTraversal(maze, xStart - 1, yStart);
             }
-            else if (maze[(xStart + 1), yStart] == '.')
+            if (maze[(xStart + 1), yStart] == '.')
             {
-                xStart = xStart + 1;
+                //xStart = xStart + 1;
                 maze[xStart, yStart] = char.Parse("O");
                 PrintMaze(maze);
-                MazeTraversal(maze, xStart, yStart);
+                MazeTraversal(maze, xStart + 1, yStart);
             }
-            else if (maze[xStart, (yStart - 1)] == '.')
+            if (maze[xStart, (yStart - 1)] == '.')
             {
-                yStart = yStart - 1;
+                //yStart = yStart - 1;
                 maze[xStart, yStart] = char.Parse("O");
                 PrintMaze(maze);
-                MazeTraversal(maze, xStart, yStart);
+                MazeTraversal(maze, xStart, yStart - 1);
             }
-            else if (maze[xStart, (yStart + 1)] == '.')
+            if (maze[xStart, (yStart + 1)] == '.')
             {
-                yStart = yStart + 1;
+                //yStart = yStart + 1;
                 maze[xStart, yStart] = char.Parse("O");
                 PrintMaze(maze);
-                MazeTraversal(maze, xStart, yStart);
+                MazeTraversal(maze, xStart, yStart + 1);
             }
+
+            //if (maze[(xStart - 1), yStart] == '.')
+            //{
+            //    xStart = xStart - 1;
+            //    maze[xStart, yStart] = char.Parse("O");
+            //    PrintMaze(maze);
+            //    MazeTraversal(maze, xStart, yStart);
+            //}
+            //if (maze[(xStart + 1), yStart] == '.')
+            //{
+            //    xStart = xStart + 1;
+            //    maze[xStart, yStart] = char.Parse("O");
+            //    PrintMaze(maze);
+            //    MazeTraversal(maze, xStart, yStart);
+            //}
+            //if (maze[xStart, (yStart - 1)] == '.')
+            //{
+            //    yStart = yStart - 1;
+            //    maze[xStart, yStart] = char.Parse("O");
+            //    PrintMaze(maze);
+            //    MazeTraversal(maze, xStart, yStart);
+            //}
+            //if (maze[xStart, (yStart + 1)] == '.')
+            //{
+            //    yStart = yStart + 1;
+            //    maze[xStart, yStart] = char.Parse("O");
+            //    PrintMaze(maze);
+            //    MazeTraversal(maze, xStart, yStart);
+            //}
             else if (maze[(xStart - 1), yStart] != '.' && //maze[(xStart - 1), yStart] != '.' &&
                      maze[xStart, (yStart - 1)] != '.' && //maze[xStart, (yStart - 1)] != '.' && 
                      maze[(xStart + 1), yStart] != '.' && //maze[(xStart + 1), yStart] != '.' &&
                      maze[xStart, (yStart + 1)] != '.') //&& maze[xStart, (yStart + 1)] != '.')
             {
                 maze[xStart, yStart] = char.Parse("X");
+                PrintMaze(maze);
             }
         }
     }
