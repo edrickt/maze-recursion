@@ -56,6 +56,7 @@ namespace cis237_assignment2
                 maze[xStart, yStart] = char.Parse("O");
                 PrintMaze(maze);
                 Console.WriteLine("Finish!");
+                Environment.Exit(0);
             }
             if (maze[(xStart - 1), yStart] == '.')
             {
@@ -86,7 +87,7 @@ namespace cis237_assignment2
                     maze[(xStart + 1), yStart] != '.' &&
                     maze[xStart, (yStart + 1)] != '.')
             {
-                maze[xStart, yStart] = char.Parse("X");
+                maze[xStart, yStart] = char.Parse(" ");
                 PrintMaze(maze);
             }
         }
