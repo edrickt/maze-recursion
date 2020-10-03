@@ -36,8 +36,10 @@ namespace cis237_assignment2
             // Create a new instance of a mazeSolver.
             MazeSolver mazeSolver = new MazeSolver();
 
-            Console.WriteLine("Enter 1 to solve maze" + Environment.NewLine + "Enter 2 to solve transposed maze");
-            string option = Console.ReadLine();
+            UserInterface ui = new UserInterface();
+
+            string option = ui.PrintMenu();
+
             // Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
@@ -49,7 +51,7 @@ namespace cis237_assignment2
             else
             {
                 // Solve the transposed maze.
-                // mazeSolver.SolveMaze(maze2, X_START, Y_START);
+                mazeSolver.SolveMaze(maze2, X_START, Y_START);
             }
         }
 
@@ -72,10 +74,25 @@ namespace cis237_assignment2
         /// </summary>
         /// <param name="mazeToTranspose"></param>
         /// <returns>transposedMaze</returns>
+        // Outside reference: https://stackoverflow.com/questions/29483660/how-to-transpose-matrix
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
             //Write code here to create a transposed maze.
-            return new char[1, 1];
+
+            int x = mazeToTranspose.GetLength(0);
+            int y = mazeToTranspose.GetLength(1);
+
+            char[,] transposedMaze = new char[y, x];
+
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    transposedMaze[j, i] = mazeToTranspose[i, j];
+                }
+            }
+
+            return transposedMaze;
         }
     }
 }

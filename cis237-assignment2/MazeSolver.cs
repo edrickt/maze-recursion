@@ -21,7 +21,6 @@ namespace cis237_assignment2
         public void SolveMaze(char[,] maze, int xStart, int yStart)
         {
             // Do work needed to use mazeTraversal recursive call and solve the maze.
-            Console.WriteLine(Environment.NewLine + "Solve Maze");
             maze[xStart, yStart] = char.Parse("X");
             MazeTraversal(maze, xStart, yStart);
         }
@@ -57,7 +56,7 @@ namespace cis237_assignment2
             {
                 maze[xStart, yStart] = char.Parse("X");
                 PrintMaze(maze);
-                Console.WriteLine("Finish!");
+                Console.WriteLine("Finished!");
                 found = true;
             }
             if (found == false && maze[(xStart - 1), yStart] == '.')
