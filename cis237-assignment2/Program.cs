@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Edrick Tamayo
+
+using System;
 
 namespace cis237_assignment2
 {
@@ -36,13 +38,16 @@ namespace cis237_assignment2
             // Create a new instance of a mazeSolver.
             MazeSolver mazeSolver = new MazeSolver();
 
+            // Makes a new instance of UserInterface class
             UserInterface ui = new UserInterface();
 
+            // Receives the option for the menu
             string option = ui.PrintMenu();
 
             // Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
+            // Simple option to choose which maze to solve.
             if (option == "1")
             {
                 // Solve the original maze.
@@ -71,6 +76,9 @@ namespace cis237_assignment2
         /// 
         /// It is important that you return a "new" char array as the transposed maze.
         /// If you do not, you could end up only solving the transposed maze.
+        /// 
+        /// Transposes the first maze and stores the transposed maze into a second array
+        /// and returns that array as the second maze.
         /// </summary>
         /// <param name="mazeToTranspose"></param>
         /// <returns>transposedMaze</returns>

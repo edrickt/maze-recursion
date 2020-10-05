@@ -25,6 +25,10 @@ namespace cis237_assignment2
             MazeTraversal(maze, xStart, yStart);
         }
 
+        /// <summary>
+        /// Prints the maze
+        /// </summary>
+        /// <param name="maze"></param>
         // Outside Reference: https://stackoverflow.com/questions/2044591/what-is-the-difference-between-array-getlength-and-array-length#:~:text=GetLength(0)%20method%20returns%20number,direction%20in%20a%20multidimensional%20array.
         private void PrintMaze(char[,] maze)
         {
@@ -45,6 +49,8 @@ namespace cis237_assignment2
         /// This is only a very small starting point.
         /// More than likely you will need to pass in at a minimum the current position
         /// in X and Y maze coordinates. EX: mazeTraversal(int currentX, int currentY)
+        /// 
+        /// A recursive method that allows for backtracking and solving the maze.
         /// </summary>
         // Outside Reference: https://www.cs.bu.edu/teaching/alg/maze/
         // Outside Reference: https://stackoverflow.com/questions/22747109/avoid-out-of-bounds-exception-in-2d-array
@@ -52,31 +58,46 @@ namespace cis237_assignment2
         {
             maze[xStart, yStart] = char.Parse("X");
             // Implement maze traversal recursive call
+
+            // The base case. If it reaches the end of the maze, it will turn the
+            // found bool true which will make it fail the conditions of the other
+            // if statements and stop searching, preventing search outside the array.
+            // Each if statement recursively calls its own recursive method. This allows
+            // This allows it to backtrack. For example, if the end of the maze is down
+            // but there is also a path to the right, the if statement to go right will be
+            // called first. It will create its own call tree to explore that path, but
+            // there will also be a call to the method that explores down to the correct
+            // path, allowing for backtracking.
             if (xStart == maze.GetLength(0) - 1 || yStart == maze.GetLength(1) - 1)
             {
+                // Changes the current coordinate to an X
                 maze[xStart, yStart] = char.Parse("X");
                 PrintMaze(maze);
                 Console.WriteLine("Finished!");
                 found = true;
             }
+            // Goes left
             if (found == false && maze[(xStart - 1), yStart] == '.')
             {
                 maze[xStart, yStart] = char.Parse("X");
                 PrintMaze(maze);
                 MazeTraversal(maze, xStart - 1, yStart);
             }
+            // Goes right
             if (found == false && maze[(xStart + 1), yStart] == '.')
             {
                 maze[xStart, yStart] = char.Parse("X");
                 PrintMaze(maze);
                 MazeTraversal(maze, xStart + 1, yStart);
             }
+            // Goes down
             if (found == false && maze[xStart, (yStart - 1)] == '.')
             {
                 maze[xStart, yStart] = char.Parse("X");
                 PrintMaze(maze);
                 MazeTraversal(maze, xStart, yStart - 1);
             }
+            // Goes up
             if (found == false && maze[xStart, (yStart + 1)] == '.')
             {
                 maze[xStart, yStart] = char.Parse("X");

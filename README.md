@@ -3,7 +3,7 @@
 
 ## Author
 
-
+Edrick Tamayo
 
 ## Description
 
@@ -50,6 +50,16 @@ Don't forget that you must have a base case for your recursive method or you wil
 
 ## Outside Resources Used
 
+Printing the maze:
+https://stackoverflow.com/questions/2044591/what-is-the-difference-between-array-getlength-and-array-length#:~:text=GetLength(0)%20method%20returns%20number,direction%20in%20a%20multidimensional%20array.
 
+Recursion to solve the maze:
+https://www.cs.bu.edu/teaching/alg/maze/
+https://stackoverflow.com/questions/22747109/avoid-out-of-bounds-exception-in-2d-array
+
+Transposing maze:
+https://stackoverflow.com/questions/29483660/how-to-transpose-matrix
 
 ## Known Problems, Issues, And/Or Errors in the Program
+
+No known issues besides no exception handling for options but not required.
