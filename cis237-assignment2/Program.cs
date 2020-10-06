@@ -1,4 +1,6 @@
 ﻿// Edrick Tamayo
+// Thursday 3:30PM
+// 06 October 2020
 
 using System;
 
